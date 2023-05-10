@@ -50,3 +50,6 @@ npm run lint
 npm run start
 
 ```
+
+## 技术文档
+[electron-builder](https://www.electron.build/)

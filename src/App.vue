@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import cloneDeep from 'lodash/cloneDeep'
+
+const aa = cloneDeep({})
+
+console.log(aa)
 </script>
 
 <template>
