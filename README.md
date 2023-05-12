@@ -51,5 +51,23 @@ npm run start
 
 ```
 
+
+##
+```js
+// web开发环境启动
+npm run dev
+
+// 桌面应用方式启动
+npm run start
+
+// vite 方式构建
+npm run build
+
+// 构建electron执行文件，生成release目录（build.directories.output）
+npm run electron:build
+
+
+```
+
 ## 技术文档
 [electron-builder](https://www.electron.build/)
