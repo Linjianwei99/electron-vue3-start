@@ -19,6 +19,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "electron-store": "^8.1.0",
     "element-plus": "^2.3.3",
     "lodash": "^4.17.21",
     "pinia": "^2.0.32",
@@ -50,7 +51,7 @@
     "directories": {
       "output": "release"
     },
-    "win": {  
+    "win": {
       "target": [
         {
           "target": "nsis"
