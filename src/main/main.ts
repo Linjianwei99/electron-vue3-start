@@ -1,43 +1,43 @@
 const { app, BrowserWindow, Tray, Menu } = require('electron')
-const path = require('path')
 
-let winURL = process.env.NODE_ENV === 'development'
-? `http://localhost:9080`
+const NODE_ENV = process.env.NODE_ENV
+const appTray = require('./tray/index.ts');
+const winURL = NODE_ENV === 'development'
+? `http://localhost:3000`
 : `file://${__dirname}/index.html`
-winURL = 'http://localhost:5173/'
-console.log('winURL', winURL)
+
 const createWindow = () => {
   const win = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: false, // 取消跨域
+      contextIsolation: false, // v12版本需要加多这一行
+      enableRemoteModule:true //v10版本 打开remote模块
     },
-    width: 800,
+    width: 1000,
     height: 600,
   })
 
   win.loadURL(winURL)
+
+  if (NODE_ENV === "development") {
+    win.webContents.openDevTools()
+  }
 }
 
 app.whenReady().then(() => {
-  // 设置托盘
-  // let iconPath
-  // if (process.env.WEBPACK_DEV_SERVER_URL) {
-  //   // 测试环境
-  //     iconPath = path.join(app.getAppPath(), 'favicon.ico');
-  // }else {
-  //     //正式环境
-  //     iconPath = path.join(path.dirname(app.getPath('exe')), 'favicon.ico');
-  //   }
-  //   console.log('iconPath', iconPath)
-  const iconSrc = path.join(__dirname, '../../public/favicon.ico');
-  const tray = new Tray(iconSrc)
-  const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' },
-    { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' }
-  ])
-  tray.setToolTip('This is my application.')
-  tray.setContextMenu(contextMenu)
   createWindow()
+  appTray.test()
+
+  app.on('activate', function () {
+    // 通常在 macOS 上，当点击 dock 中的应用程序图标时，如果没有其他
+    // 打开的窗口，那么程序会重新创建一个窗口。
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+})
+
+// 除了 macOS 外，当所有窗口都被关闭的时候退出程序。 因此，通常对程序和它们在
+// 任务栏上的图标来说，应当保持活跃状态，直到用户使用 Cmd + Q 退出。
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit()
 })
