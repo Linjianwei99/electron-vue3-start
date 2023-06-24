@@ -63,6 +63,12 @@ npm run start
 // vite 方式构建
 npm run build
 
+// 目打包体积
+1.41 MB (1,489,568 字节)
+
+
+
+
 // 构建electron执行文件，生成release目录（build.directories.output）
 npm run electron:build
 
@@ -71,3 +77,10 @@ npm run electron:build
 
 ## 技术文档
 [electron-builder](https://www.electron.build/)
+
+
+## 开发规范
+组件名称必须多个单词：https://eslint.vuejs.org/rules/multi-word-component-names.html
+
+## 待解决问题
+- vue组件的自动导入不报错，但是组件不显示，需要手动import才可以

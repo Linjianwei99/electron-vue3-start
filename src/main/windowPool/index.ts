@@ -70,7 +70,7 @@ class WindowsPoolManager {
   }
 
   // 移除窗口
-  removeWindow(id: string) {
+  removeWindow(id: number) {
     console.log('id', id)
   }
 

@@ -1,4 +1,6 @@
 const { app, BrowserWindow, Tray, Menu } = require('electron')
+// import { app, BrowserWindow, Tray, Menu } from 'electron'
+
 
 const NODE_ENV = process.env.NODE_ENV
 const appTray = require('./tray/index.ts');
@@ -12,7 +14,7 @@ const createWindow = () => {
       nodeIntegration: true,
       webSecurity: false, // 取消跨域
       contextIsolation: false, // v12版本需要加多这一行
-      enableRemoteModule:true //v10版本 打开remote模块
+      // enableRemoteModule: true //v10版本 打开remote模块
     },
     width: 1000,
     height: 600,

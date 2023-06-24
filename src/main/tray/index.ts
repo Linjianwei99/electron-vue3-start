@@ -1,4 +1,5 @@
-const { app, BrowserWindow, Tray, Menu } = require('electron')
+// const { app, BrowserWindow, Tray, Menu } = require('electron')
+import { app, BrowserWindow, Tray, Menu } from 'electron'
 const path = require('path')
 
 // import path from 'path'

@@ -1,0 +1,16 @@
+@use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
+
+// @import './base.css';
+
+#app {
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
